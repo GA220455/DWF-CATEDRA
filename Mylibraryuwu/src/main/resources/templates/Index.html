@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Inicio</title>
+    <style>
+        /* Estilos CSS incorporados */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4)),
+                        url('https://i.pinimg.com/736x/26/2c/9e/262c9efdd21603fc14087e205af7255b.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+            backdrop-filter: blur(3px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+        }
+
+        form {
+            width: 100%;
+            max-width: 300px;
+            margin: 0;
+        }
+
+        button {
+            background-color: rgba(52, 152, 219, 0.9);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        form:first-child button {
+            background-color: rgba(46, 204, 113, 0.9);
+        }
+
+        form:nth-child(2) button {
+            background-color: rgba(231, 76, 60, 0.9);
+        }
+
+        form:last-child button {
+            background-color: rgba(52, 152, 219, 0.9);
+        }
+
+        form:first-child button:hover {
+            background-color: rgba(39, 174, 96, 0.9);
+        }
+
+        form:nth-child(2) button:hover {
+            background-color: rgba(192, 57, 43, 0.9);
+        }
+
+        form:last-child button:hover {
+            background-color: rgba(41, 128, 185, 0.9);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Bienvenido a la Librería</h1>
+    <p>¿Cómo deseas ingresar?</p>
+
+    <div class="buttons-container">
+        <form th:action="@{/login-cliente}" method="get">
+            <button type="submit">Ingresar como Cliente</button>
+        </form>
+
+        <form th:action="@{/login-empleado}" method="get">
+            <button type="submit">Ingresar como Empleado</button>
+        </form>
+
+        <!-- Botón para registro -->
+        <form th:action="@{/registro}" method="get">
+            <button type="submit">¿No tienes cuenta? Regístrate</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

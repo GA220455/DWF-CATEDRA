@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Productos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem;
+        }
+        nav a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .catalogo {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+        .producto {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra de navegación -->
+<nav>
+    <a href="#" th:href="@{/cliente/categoria/libros}">Libros</a>
+    <a href="#" th:href="@{/cliente/categoria/manualidades}">Manualidades</a>
+    <a href="#" th:href="@{/cliente/categoria/oficina}">Oficina</a>
+    <a href="#" th:href="@{/cliente/categoria/hogar}">Hogar</a>
+</nav>
+
+<!-- Catálogo de productos -->
+<h2 style="padding: 1rem;">Catálogo completo</h2>
+<div class="catalogo">
+    <div class="producto" th:each="producto : ${productos}">
+        <h3 th:text="${producto.nombre}">Nombre del producto</h3>
+        <p th:text="${producto.descripcion}">Descripción del producto</p>
+        <p><strong>Precio: $</strong><span th:text="${producto.precio}">0.00</span></p>
+    </div>
+</div>
+
+</body>
+</html>
